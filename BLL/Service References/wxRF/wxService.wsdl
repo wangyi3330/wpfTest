@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="CheckInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckInfoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInfoResult" type="tns:ArrayOfUserInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUserInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserInfo" nillable="true" type="tns:UserInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RegisterNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Brand" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Series" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Opperson" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="ArrayOfUserInfo" nillable="true" type="tns:ArrayOfUserInfo" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CheckInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckInfo" />
+  </wsdl:message>
+  <wsdl:message name="CheckInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckInfoHttpGetIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="rno" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoHttpGetIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="rno" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUserInfo" />
+  </wsdl:message>
+  <wsdl:message name="CheckInfoHttpPostIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="rno" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoHttpPostIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="rno" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUserInfo" />
+  </wsdl:message>
+  <wsdl:portType name="WXServiceSoap">
+    <wsdl:operation name="CheckInfo">
+      <wsdl:input message="tns:CheckInfoSoapIn" />
+      <wsdl:output message="tns:CheckInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInfo">
+      <wsdl:input message="tns:GetInfoSoapIn" />
+      <wsdl:output message="tns:GetInfoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WXServiceHttpGet">
+    <wsdl:operation name="CheckInfo">
+      <wsdl:input message="tns:CheckInfoHttpGetIn" />
+      <wsdl:output message="tns:CheckInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInfo">
+      <wsdl:input message="tns:GetInfoHttpGetIn" />
+      <wsdl:output message="tns:GetInfoHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WXServiceHttpPost">
+    <wsdl:operation name="CheckInfo">
+      <wsdl:input message="tns:CheckInfoHttpPostIn" />
+      <wsdl:output message="tns:CheckInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInfo">
+      <wsdl:input message="tns:GetInfoHttpPostIn" />
+      <wsdl:output message="tns:GetInfoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WXServiceSoap" type="tns:WXServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckInfo">
+      <soap:operation soapAction="http://tempuri.org/CheckInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInfo">
+      <soap:operation soapAction="http://tempuri.org/GetInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WXServiceSoap12" type="tns:WXServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckInfo">
+      <soap12:operation soapAction="http://tempuri.org/CheckInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WXServiceHttpGet" type="tns:WXServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="CheckInfo">
+      <http:operation location="/CheckInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInfo">
+      <http:operation location="/GetInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WXServiceHttpPost" type="tns:WXServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="CheckInfo">
+      <http:operation location="/CheckInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInfo">
+      <http:operation location="/GetInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WXService">
+    <wsdl:port name="WXServiceSoap" binding="tns:WXServiceSoap">
+      <soap:address location="http://60.28.131.190:9090/wxService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WXServiceSoap12" binding="tns:WXServiceSoap12">
+      <soap12:address location="http://60.28.131.190:9090/wxService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WXServiceHttpGet" binding="tns:WXServiceHttpGet">
+      <http:address location="http://60.28.131.190:9090/wxService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WXServiceHttpPost" binding="tns:WXServiceHttpPost">
+      <http:address location="http://60.28.131.190:9090/wxService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{51B33EAF-1389-4C3B-8503-A76CF83B1786}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Carrot.Model</RootNamespace>
+    <AssemblyName>Carrot.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddressModel.cs" />
+    <Compile Include="BankRecordModel.cs" />
+    <Compile Include="BucketModel.cs" />
+    <Compile Include="CartModel.cs" />
+    <Compile Include="Common\CheckControlParams.cs" />
+    <Compile Include="Common\ColumnAttribute.cs" />
+    <Compile Include="Common\JoinModel.cs" />
+    <Compile Include="Common\OleDbParams.cs" />
+    <Compile Include="Common\ModelWhereParams.cs" />
+    <Compile Include="Common\WhereParameter.cs" />
+    <Compile Include="ConfigModel.cs" />
+    <Compile Include="ExternalModel\WeatherModel.cs" />
+    <Compile Include="E_Model\E_Address_OrderModel.cs" />
+    <Compile Include="E_Model\E_BankRecord_UserGoodsModel.cs" />
+    <Compile Include="E_Model\E_Bucket_GoodsModel.cs" />
+    <Compile Include="E_Model\E_Cart_GoodsModel.cs" />
+    <Compile Include="E_Model\E_UserGoods_Goods_BucketModel.cs" />
+    <Compile Include="E_Model\E_OrderItem_Goods_BucketModel.cs" />
+    <Compile Include="E_Model\E_OrderEvaluate_OrderModel.cs" />
+    <Compile Include="E_Model\E_WaterSite_OrderModel.cs" />
+    <Compile Include="GoodsModel.cs" />
+    <Compile Include="NewsModel.cs" />
+    <Compile Include="OrderEvaluateModel.cs" />
+    <Compile Include="OrderItemModel.cs" />
+    <Compile Include="OrderModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TransactionRecordModel.cs" />
+    <Compile Include="UserGoodsModel.cs" />
+    <Compile Include="UserInfoModel.cs" />
+    <Compile Include="VerifyCodeModel.cs" />
+    <Compile Include="VersionModel.cs" />
+    <Compile Include="WaterSiteModel.cs" />
+    <Compile Include="WeixinAccessModel.cs" />
+    <Compile Include="WeixinModel.cs" />
+    <Compile Include="WorkerModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SqlCommon\SqlCommon.csproj">
+      <Project>{1f5747dc-d2cf-433a-84fe-d0492932eb43}</Project>
+      <Name>SqlCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

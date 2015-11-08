@@ -1,5 +1,10 @@
-﻿using System;
+﻿using Carrot.BLL;
+using Carrot.Model;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +28,22 @@ namespace WpfApplication1
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            getdata();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            textBox.Text = "111111";
+        }
+        void getdata()
+        {
+            listView1.DataContext =  PublicBLL.GetList(new GoodsInfo());
+
         }
     }
 }
